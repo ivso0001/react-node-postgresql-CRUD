@@ -19,7 +19,10 @@ const UpdateUserModal = (props: Props) => {
         if (props.isOpen) {
             if (willUpdate) {
                 setWllUpdate(false)
-                setUser(props.user)
+                setUser({
+                    name: props.user.name,
+                    email: props.user.email,
+                })
             }
         } else {
             setWllUpdate(true)

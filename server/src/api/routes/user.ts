@@ -1,6 +1,6 @@
 import * as express from 'express'
 import { postUser, putUser, deleteUser, getUser, getUsers } from '../middlewares/user'
-import { User } from '../../interfaces/user'
+import { UserInput } from '../../interfaces/user'
 
 const USER = '/user'
 const USERS = '/users'
@@ -9,7 +9,7 @@ const router = express.Router()
 
 router.post(USER, async (req, res, next) => {
     try {
-        const user: User = req.body
+        const user: UserInput = req.body
         const result = await postUser(user)
         res.json(result)
     } catch (e) {
@@ -19,7 +19,7 @@ router.post(USER, async (req, res, next) => {
 
 router.put(USER + '/:id', async (req, res, next) => {
     try {
-        const user: User = req.body
+        const user: UserInput = req.body
         const id: number = Number(req.params.id)
         const result = await putUser(user, id)
         res.json(result)
@@ -50,7 +50,9 @@ router.get(USER + '/:id', async (req, res, next) => {
 
 router.get(USERS, async (req, res, next) => {
     try {
-        const users = await getUsers()
+        const skip: number = Number(req.query.skip)
+        const take: number = Number(req.query.take)
+        const users = await getUsers(skip, take)
         res.json(users)
     } catch (e) {
         res.status(500).json(e)

@@ -4,8 +4,8 @@ import { Dialect } from 'sequelize'
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-        PORT: string,
-        DB_PORT: string,
+        PORT: number,
+        DB_PORT: number,
         DB_HOST: string,
         DB_NAME: string,
         DB_DIALECT: Dialect,

@@ -4,10 +4,10 @@ const sequelize_1 = require("sequelize");
 const user = (sequelize) => {
     return sequelize.define('users', {
         name: {
-            type: sequelize_1.DataTypes.STRING(10),
+            type: sequelize_1.DataTypes.STRING(30),
         },
         email: {
-            type: sequelize_1.DataTypes.STRING(30),
+            type: sequelize_1.DataTypes.STRING(50),
         },
         createdAt: {
             field: 'created_at',

@@ -57,7 +57,9 @@ router.get(USER + '/:id', (req, res, next) => __awaiter(void 0, void 0, void 0, 
 }));
 router.get(USERS, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const users = yield user_1.getUsers();
+        const skip = Number(req.query.skip);
+        const take = Number(req.query.take);
+        const users = yield user_1.getUsers(skip, take);
         res.json(users);
     }
     catch (e) {

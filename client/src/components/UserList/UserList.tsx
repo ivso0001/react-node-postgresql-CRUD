@@ -28,7 +28,7 @@ class UserList extends Component<{}, State> {
     }
 
     updateList = () => {
-        getUsers().then(users => {
+        getUsers(0, 20).then(users => {
             this.setState({
                 users
             })

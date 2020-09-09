@@ -6,7 +6,7 @@ export interface User {
     updatedAt: Date,
 }
 
-export interface UserInputDTO {
+export interface UserInput {
     name: string,
     email: string,
 }

@@ -41,9 +41,14 @@ export const getUser = async (id: number): Promise<User> => {
     }
 }
 
-export const getUsers = async (): Promise<User[]> => {
+export const getUsers = async (skip: number, take: number): Promise<User[]> => {
     try {
-        const response = await axios.get(process.env.SERVER_BASE_URL + USERS)
+        const response = await axios.get(process.env.SERVER_BASE_URL + USERS, {
+            params: {
+                skip,
+                take
+            }
+        })
         const users: User[] = response.data
         return Promise.resolve(users)
     } catch (e) {
